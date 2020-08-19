@@ -11,31 +11,49 @@ console.log('its working');
 (c) Home Team goals for 2014 world cup final
 (d) Away Team goals for 2014 world cup final
 (e) Winner of 2014 world cup final */
+const homeTeamFinal = fifaData.filter(function(item){
+    return item.Year === 2014 && item.Stage === "Final"    
+})
+console.log(homeTeamFinal[0]["Home Team Name"]);
+console.log(homeTeamFinal[0]["Away Team Name"]);
+console.log(homeTeamFinal[0]["Home Team Goals"]);
+console.log(homeTeamFinal[0]["Away Team Goals"]);
 
+if (homeTeamFinal[0]["Home Team Goals"] === homeTeamFinal[0]["Away Team Goals"]){
+    console.log("Tie")
+} else if (homeTeamFinal[0]["Home Team Goals"] > homeTeamFinal[0]["Away Team Goals"]){
+    console.log(`${homeTeamFinal[0]["Home Team Name"]} Wins`)
+} else {
+    console.log(`${homeTeamFinal[0]["Away Team Name"]} Wins`)
+} 
 
 /* Task 2: Create a function called  getFinals that takes `data` as an argument and returns an array of objects with only finals data */
 
-function getFinals(/* code here */) {
-
-    /* code here */
-
-};
-
+function getFinals(data){
+    return data.filter(function(item){
+        return item.Stage === "Final"
+    });
+}
+console.log(getFinals(fifaData))
 /* Task 3: Implement a higher-order function called `getYears` that accepts the callback function `getFinals`, and returns an array called `years` containing all of the years in the dataset */
 
-function getYears(/* code here */) {
-
-    /* code here */
-
-};
-
-getYears();
-
+// function getYears(getFinals){
+//     let yearStorage =[]
+//     for(let i=0;i<getFinals.length;i++){
+//         getFinals[i].Year
+//     } 
+//     return 
+// }
+function getYears(getFinals,data){
+    return getFinals(data).map(function(item){
+        return item.Year
+    })
+}
+console.log(getYears(getFinals,fifaData))
 /* Task 4: Implement a higher-order function called `getWinners`, that accepts the callback function `getFinals()` and determine the winner (home or away) of each `finals` game. Return the name of all winning countries in an array called `winners` */ 
 
-function getWinners(/* code here */) {
-
-    /* code here */
+function getWinners(cb){
+    return 
 
 };
 
